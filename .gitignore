@@ -13,7 +13,11 @@
 .*.lb
 *.fcs*
 *.png*
-.DS*
+*.DS_*
+*.mat*
+*.txt*
+
+!README*
 
 ## Intermediate documents:
 *.dvi
