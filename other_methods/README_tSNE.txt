@@ -38,7 +38,7 @@ file 'file_CCT.fcs' in the folder './fcm_ctflowhd/other_methods/data'.
 
 *******************  Step #3  ******************
 Open MATLAB. Change your working directory to 
-'./fcm_ctflowhd/other_methods'. Open the script file named 'fcm-tSNE.m'.
+'./fcm_ctflowhd/other_methods'. Open the script file named 'fcm_tSNE.m'.
 ************************************************
 
 *******************  Step #4  ****************** >>> Lines 1 to 7
