@@ -17,7 +17,6 @@
 *.mat*
 *.txt*
 *.ps*
-*.asv*
 
 !README*
 
