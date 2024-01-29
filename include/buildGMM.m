@@ -1,4 +1,11 @@
 function [g,y,lambda] = buildGMM(X,indVar,R,t)
+% This function builds a Gaussian Mixture Model from an observation matrix
+% X.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 g = fitgmdist(X(:,indVar),R);
 

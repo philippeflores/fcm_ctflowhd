@@ -1,4 +1,11 @@
 function plot_GMM(g,X,indVar,t,strLabel,varargin)
+% This function permits to plot the results of a flow cytometry data
+% analysis experiment that uses a GMM.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 stepCloud = 10;
 indPlot = {};

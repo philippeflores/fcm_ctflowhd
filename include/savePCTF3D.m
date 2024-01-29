@@ -1,4 +1,11 @@
 function savePCTF3D(varargin)
+% This function permits to save the results of PCTF3D for future
+% visualizations.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 listBan = {'strVariables','strMethod','dataMarg','X'};
 

@@ -1,4 +1,11 @@
-function plotTsne(Y,indVar,X,strLabel,varargin)
+function plot_tSNE(Y,indVar,X,strLabel,varargin)
+% This function permits to plot the results of a flow cytometry experiment
+% that uses t-SNE maps colorized with marker expressions.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 stepCloud = 50;
 M = size(indVar,2);

@@ -1,4 +1,11 @@
 function [X,fcsHdr,strFile] = loadFilename(filename)
+% This function is loading the observation matrix and the metadata of a
+% flow cytometry FCS file.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 listAvailable = {dir("data/").name};
 listAvailable = listAvailable(3:end);

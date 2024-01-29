@@ -1,4 +1,11 @@
 function strLabelOut = changeLabel(strLabelIn,varargin)
+% This function permits to change the labels of a flow cytometry
+% experiment.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 strChange = 'man';
 

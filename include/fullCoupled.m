@@ -1,4 +1,11 @@
 function calTfull = fullCoupled(M)
+% This function outputs the coupling that contains all possible triplets of
+% variables in [1:M]. 
+% 
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 calTfull = cell(1,nchoosek(M,3));
 countT = 1;

@@ -1,4 +1,11 @@
 function [calT,d] = balancedCoupling(M,T)
+% This function is generating a balanced coupling. It corresponds to the
+% algorithm 4 of the thesis mauscript of the author.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 calT = cell(1,T);
 

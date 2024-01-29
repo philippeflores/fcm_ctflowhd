@@ -1,4 +1,13 @@
 function dataMarg = computeMarginals(X,indVar,t,I,calT)
+% This function permits to compute 3D marginals from an observation matrix
+% X. It computes marginals of indices {j,k,l} that are contained in the
+% coupling calT. For each variable in indVar, the I bins on which the
+% histogram is computed is defined in the variable t.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 M = size(indVar,2);
 

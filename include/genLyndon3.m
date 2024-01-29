@@ -1,4 +1,11 @@
 function [matLW,nPerm] = genLyndon3(M,varargin)
+% This function generates Lyndon words of length M for the alphabet {0,1}
+% that contain exactly three times the 1 symbol. 
+% 
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 if size(varargin,2)==0
     Tfull = nchoosek(M,3);

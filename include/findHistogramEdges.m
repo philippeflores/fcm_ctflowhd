@@ -1,4 +1,11 @@
 function [a,b] = findHistogramEdges(X,varargin)
+% This function permits to find the edges of a histogram from a set of
+% flow cytometry observations X.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 a0 = -5;
 b0 = 15;

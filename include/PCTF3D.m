@@ -1,35 +1,36 @@
 function [y,lambda,erreur3,erreur1,flag,R] = PCTF3D(dataMarg,R,varargin)
-% AOADMMCOUPLE (Alternate Optimization using Alternating Direction Method of 
-% Multipliers for Coupled Tensor Factorization) with Sum To One constraints
+% PCTF3D (Partially Coupled Tensor Factorization of 3D Marginals)
 % 
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
+%
 % -------------------------------------------------------------------------
 % INPUTS
 % -------------------------------------------------------------------------
 %
-% dataX : structure containing data
-% R : Rank of factorization
-% triplets : indices of each triplets considered for coupled TF
-% N1 : Maximal number of outer iterations
-% N2 : Maximal number of inner iterations
-% eps : tolerance for stopping criteria of the inner loop
-% y0 : initialisation
+% dataMarg : structure containing 3D marginals data
+% R : target rank of the decomposition
 % 
 % -------------------------------------------------------------------------
 % OUTPUTS
 % -------------------------------------------------------------------------
 % 
-% y : 1xM cell that contains the factors of the factorization of X (where N
-% is the order of the tensor)
-% lambda : Rx1 vector containing the proportion of each components on the
+% y : 1xM cell that contains the factors of the factorization (where M is 
+% the order of the tensor)
+% lambda : Rx1 vector containing the proportion of each component of the
 % decomposition
-% erreur : Vector that contains frobenius errors between the factorization
-% tensor and the tensor X
+% erreur3 : Vector that contains error on 3D marginals
+% erreur1 : Vector that contains error on 1D marginals
 % flag : information about the stop of the algorithm
+% R : output rank of the decomposition
 % 
 % -------------------------------------------------------------------------
 % -------------------------------------------------------------------------
 % Set the default parameters
 % -------------------------------------------------------------------------
+
 T1 = 1000;
 T2 = 20;
 eps = 10^(-10);

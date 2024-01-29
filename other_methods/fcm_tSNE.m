@@ -32,4 +32,4 @@ fprintf("Computation time for tSNE : %fs\n",time_tSNE)
 stepCloud = 1;
 
 close all
-plotTsne(Y,indVar,X,strLabel,'stepCloud',stepCloud)
+plot_tSNE(Y,indVar,X,strLabel,'stepCloud',stepCloud)

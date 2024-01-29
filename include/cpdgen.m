@@ -1,6 +1,11 @@
 function y = cpdgen(x,lambda)
 % CPDGEN : computes the tensor from factors and weights
 % 
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
+%
 % *** Input Arguments ***
 %
 %   - x : cpd factors (cell of size 1xM)
@@ -27,7 +32,6 @@ function y = cpdgen(x,lambda)
 % *** Requirements *** 
 % This function requires the installation of the N-way toolbox for MATLAB.
 % Reference: Anderson and Bro, "The N-way Toolbox for MATLAB", 2000
-%
 
 A = x{1};
 R = size(A,2);

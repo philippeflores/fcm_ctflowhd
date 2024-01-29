@@ -1,6 +1,11 @@
 function [indVarOut,M,strLabel] = loadIndVar(X,indVarIn,fcsHdr)
 % LOADINDVAR : load variables in a flow cytometry fcs file
 % 
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
+%
 % *** Input Arguments ***
 %
 %   - X : flow cytometry data (double of size NxM)

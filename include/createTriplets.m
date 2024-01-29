@@ -1,4 +1,13 @@
 function [calTout,Tout] = createTriplets(M,indVar,strStrategy,varargin)
+% This function returns a coupling calT from a set of variables in indVar.
+% To choose triplets, a coupling strategy must be entered as an input of
+% this function. Please refer to the thesis manuscript of the author for
+% more information on coupling strategies.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 if (rem(length(varargin),2)==1)
     error('Optional parameters should always go by pairs');

@@ -1,4 +1,10 @@
 function bigScreen(varargin)
+% This function permits to change a figure position on a screen.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 if nargin==0
     vScreen = [0 0 1 1];

@@ -91,7 +91,7 @@ This section plots one t-SNE map for each marker in 'indVar'.
 For large 
 datasets, it is possible to plot 1 cell every 'stepCloud' cells. To change 
 this optional parameter to 30 for example, change line 35 for this:
-    >>> plotTsne(Y,indVar,X,strLabel,'stepCloud',30)
+    >>> plot_tSNE(Y,indVar,X,strLabel,'stepCloud',30)
 
 You can also change the parameter 'strScreen' with the same method. You can
 set this parameter with the following options:
