@@ -95,10 +95,10 @@ this optional parameter to 30 for example, change line 35 for this:
 
 You can also change the parameter 'strScreen' with the same method. You can
 set this parameter with the following options:
-    >>> ...,'strScreen','demiTop', ...) : half top of the screen (default),
-    >>> ...,'strScreen','demiBot', ...) : half bottom of the screen,
-    >>> ...,'strScreen','demiL', ...) : half left of the screen,
-    >>> ...,'strScreen','demiR', ...) : half right of the screen,
+    >>> ...,'strScreen','halfTop', ...) : half top of the screen (default),
+    >>> ...,'strScreen','halfBot', ...) : half bottom of the screen,
+    >>> ...,'strScreen','halfL', ...) : half left of the screen,
+    >>> ...,'strScreen','halfR', ...) : half right of the screen,
     >>> ...,'strScreen','full', ...) : full screen.
 
 You can also change the parameter 'xlimMan' with the same method. You can
