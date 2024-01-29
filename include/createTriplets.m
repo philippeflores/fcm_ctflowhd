@@ -79,8 +79,8 @@ elseif strcmpi(strStrategy,'+2')
         calTout{t} = indVar(sort(calTout{t}));
     end
 
-    matT = reshape([calTout{:}],3,[])';
-    [~,indSort] = sortrows(matT);
+    V = reshape([calTout{:}],3,[])';
+    [~,indSort] = sortrows(V);
     calTout = calTout(indSort);
 
 elseif strcmpi(strStrategy,'rng')
@@ -105,8 +105,8 @@ elseif strcmpi(strStrategy,'rng')
         calTout = calTmax(randperm(Tmax,Tout));
     end
     
-    matT = reshape([calTout{:}],3,[])';
-    [~,indSort] = sortrows(matT);
+    V = reshape([calTout{:}],3,[])';
+    [~,indSort] = sortrows(V);
     calTout = calTout(indSort);
 
 elseif strcmpi(strStrategy,'bal')

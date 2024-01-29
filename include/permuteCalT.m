@@ -15,8 +15,8 @@ end
 for t = 1:size(calT,2)
     calTout{t} = sort(calTout{t},'ascend');
 end
-matT = reshape([calTout{:}],3,[])';
-[~,temp] = sortrows(matT,'ascend');
+matCalT = reshape([calTout{:}],3,[])';
+[~,temp] = sortrows(matCalT,'ascend');
 calTout = calTout(temp);
 
 end

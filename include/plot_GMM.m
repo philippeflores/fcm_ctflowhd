@@ -130,12 +130,12 @@ if isempty(indPlot)==1
 else
 
     nMarg = size(indPlot,2);
-    nMarg1 = 0; nMarg2 = 0; temp = ones(nMarg,1); for n = 1:nMarg, if size(indPlot{n},2)==1, nMarg1 = nMarg1+1; else, nMarg2 = nMarg2+1; temp(n) = 2; end, end
-    nC = max([min([colMax nMarg1]) min([colMax nMarg2])]);
-    nRow = ceil(nMarg1/nC)+ceil(nMarg2/nC);
+    nMarg1D = 0; nMarg2D = 0; temp = ones(nMarg,1); for n = 1:nMarg, if size(indPlot{n},2)==1, nMarg1D = nMarg1D+1; else, nMarg2D = nMarg2D+1; temp(n) = 2; end, end
+    nC = max([min([colMax nMarg1D]) min([colMax nMarg2D])]);
+    nRow = ceil(nMarg1D/nC)+ceil(nMarg2D/nC);
     indMarg1 = cell2mat(indPlot(temp==1));
     indMarg2 = cell2mat(indPlot(temp==2)');
-    for n = 1:nMarg1
+    for n = 1:nMarg1D
         m = indMarg1(n);
         subplot(nRow,nC,n)
         htemp = histcounts(X(:,indVar(m)),I,'BinLimits',t{indVar(m)}([1 I]),'Normalization','pdf');
@@ -161,8 +161,8 @@ else
         end
         title(strLabel{m},'FontSize',25)
     end
-    offset = ceil(nMarg1/nC)*nC;
-    for n = 1:nMarg2
+    offset = ceil(nMarg1D/nC)*nC;
+    for n = 1:nMarg2D
         subplot(nRow,nC,offset+n)
         m1 = indMarg2(n,1);
         m2 = indMarg2(n,2);

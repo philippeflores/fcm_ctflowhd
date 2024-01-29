@@ -1,4 +1,4 @@
-function y = permfacto(x,indPerm)
+function y = permfacto(x,perm)
 % PERMFACTO : permutes cpd factors
 %
 % *** Input Arguments ***
@@ -32,7 +32,7 @@ y = cell(1,M);
 for m = 1:M
     y{m} = zeros(size(x{m}));
     for r=1:R
-        y{m}(:,r) = x{m}(:,indPerm(r));
+        y{m}(:,r) = x{m}(:,perm(r));
     end
 end
 

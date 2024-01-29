@@ -6,13 +6,13 @@ end
 if nargin==1
     if strcmpi(varargin{1},'full')
         vScreen = [0 0 1 1];
-    elseif strcmpi(varargin{1},'demiL')
+    elseif strcmpi(varargin{1},'halfL')
         vScreen = [0 0 0.5 1];
-    elseif strcmpi(varargin{1},'demiR')
+    elseif strcmpi(varargin{1},'halfR')
         vScreen = [0.5 0 0.5 1];
-    elseif strcmpi(varargin{1},'demiTop')
+    elseif strcmpi(varargin{1},'halfTop')
         vScreen = [0 0.5 1 0.5];
-    elseif strcmpi(varargin{1},'demiBot')
+    elseif strcmpi(varargin{1},'halfBot')
         vScreen = [0 0 1 0.5];
     else
         vScreen = varargin{1};

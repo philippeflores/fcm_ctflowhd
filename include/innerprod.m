@@ -1,4 +1,4 @@
-function y = innerprod(X,Y)
+function val = innerprod(X,Y)
 % INNERPROD : computes the inner product between two tensors
 % 
 % *** Input Arguments ***
@@ -16,13 +16,13 @@ function y = innerprod(X,Y)
 % 
 
 if length(size(X))~=length(size(Y)) || sum(size(X)==size(Y))~=length(size(X))
-    error("*** Erreur dans la fonction myInnerProduct ***\nLes deux éléments du produit ne sont pas de même taille. Fermeture du programme.\n");
+    error("*** Error in the function myInnerProduct ***\nThe two elements of the inner product must have the same size.\n");
 end
 
-y = X.*Y;
+val = X.*Y;
 
-while length(y) > 1
-    y = sum(y);
+while length(val) > 1
+    val = sum(val);
 end
 
 end

@@ -1,4 +1,4 @@
-function [fcsData,fcsHdr,strFile] = loadFilename(filename)
+function [X,fcsHdr,strFile] = loadFilename(filename)
 
 listAvailable = {dir("data/").name};
 listAvailable = listAvailable(3:end);
@@ -44,6 +44,6 @@ end
 
 filename = strcat('data/',strFile,'.fcs');
 
-[fcsData,fcsHdr] = fca_readfcs(filename);
+[X,fcsHdr] = fca_readfcs(filename);
 
 end

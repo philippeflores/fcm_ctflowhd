@@ -104,8 +104,8 @@ if boolPlot==1, fprintf("\nPCTF3D :    "), end
 while flag == 0
     if boolPlot==1
 	    for i = 1:99
-		    trigperc = floor(i*T1/100)+1;
-		    if t1==trigperc, fprintf('\b\b\b\b %2d%%',i); end
+		    trigPerc = floor(i*T1/100)+1;
+		    if t1==trigPerc, fprintf('\b\b\b\b %2d%%',i); end
 	    end
     end
 

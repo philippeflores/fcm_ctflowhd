@@ -1,4 +1,4 @@
-function y = frob(X)
+function val = frob(X)
 % FROB : computes the frobenius norm of a tensor
 % 
 % *** Input Arguments ***
@@ -15,6 +15,6 @@ function y = frob(X)
 % y = ||X||_F.
 %
 
-y = sqrt(innerprod(X,X));
+val = sqrt(innerprod(X,X));
 
 end

@@ -1,4 +1,4 @@
-function v = findPosVar(indVar,T)
+function indTrip = findPosVar(indVar,T)
 % FINDPOSVAR : find the variable position for one triplet
 % 
 % *** Input Arguments ***
@@ -24,6 +24,6 @@ function v = findPosVar(indVar,T)
 % 
 
 temp = indVar==T';
-v = [find(temp(1,:)) find(temp(2,:)) find(temp(3,:))];
+indTrip = [find(temp(1,:)) find(temp(2,:)) find(temp(3,:))];
 
 end

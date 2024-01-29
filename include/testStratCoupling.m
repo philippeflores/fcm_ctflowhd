@@ -1,6 +1,6 @@
 function [flag,varLink] = testStratCoupling(calT,M)
 
-	Ntriplets = size(calT,2);
+	T = size(calT,2);
 	matTriplets = reshape([calT{:}],3,[])';
 	varLink = {};
 
@@ -13,7 +13,7 @@ function [flag,varLink] = testStratCoupling(calT,M)
 		flag2 = 0;
 		while flag2==0
 			indTemp = [];
-			for nTrip = 1:Ntriplets
+			for nTrip = 1:T
 				if any(matTriplets(nTrip,:)==m)
 					indTemp = [indTemp nTrip];
 				end

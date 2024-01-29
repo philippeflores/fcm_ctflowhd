@@ -4,7 +4,7 @@ stepCloud = 50;
 M = size(indVar,2);
 xlimMan = [-0.5 4.5];
 colMax = 4;
-strScreen = 'demiTop';
+strScreen = 'halfTop';
 flagScreen = 0;
 
 if (rem(length(varargin),2)==1)

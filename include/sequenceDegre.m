@@ -1,6 +1,6 @@
-function d = sequenceDegre(T)
+function d = sequenceDegre(calT)
 	
-matT = [T{:}];
+matT = [calT{:}];
 d = zeros(max(max(matT)),1);
 for m = 1:size(d,1)
 	d(m) = size(find(matT(:)==m),1);
