@@ -47,4 +47,4 @@ T2 = 50;
 
 %% Saving results
 
-savePCTF3D
+savePCTF3D("data")

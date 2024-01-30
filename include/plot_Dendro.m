@@ -307,14 +307,12 @@ for row = 1:nRow
 			colormap(1-gray)
 			ax = gca; ax.FontSize = 20;
 			
-			if xlimMan(1)<1e7
-                if t{indVar(m)}(end)>1000
-                    ecart = t{indVar(m)}(2)-t{indVar(m)}(1);
-                    xlim([t{indVar(m)}(1)-ecart t{indVar(m)}(end)+ecart])
-                else
-				    xlim(xlimMan)
-                end
-			end
+            if t{indVar(m)}(end)>100
+                ecart = t{indVar(m)}(2)-t{indVar(m)}(1);
+                xlim([t{indVar(m)}(1)-ecart t{indVar(m)}(end)+ecart])
+            else
+                xlim(xlimMan)
+            end
 			
 			ax = gca; ax.FontSize = 12;
 			ytickangle(0);
