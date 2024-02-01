@@ -12,7 +12,7 @@ filename = "file_CCT";
 [X,fcsHdr,strFile] = loadFilename(filename);
 strVariables = {fcsHdr.par.marker}';
 
-%% Selection of variables
+%% Selection of variables to build the K-means map
 
 indVar = [];
 
@@ -26,18 +26,16 @@ strMethod = 'fluo';
 
 t = supportDist(X,indVar,100,'strMethod',strMethod);
 
-%% Building the Gaussian Mixture Model
+%% Building the K-means model
 
-R = 3;		   % Nombre de composantes (Plus il y en a plus le temps de calcul est long)
+K = 3;
 
-tic, [g,y,lambda] = buildGMM(X,indVar,R,t); time_GMM = toc;
-fprintf("Computation time for Gaussian Mixture Model : %fs\n",time_GMM)     
+tic, [idx,C] = kmeans(X(:,indVar),K); time_Kmeans = toc;
+fprintf("Computation time for K-means : %fs\n",time_Kmeans)     
 
-%% Plot the GMM with single cell bivariate plots
+%% Plot the Kmeans clusters
 
 stepCloud = 10;
 
 close all
-plot_GMM(g,X,indVar,t,strLabel,'stepCloud',stepCloud)
-
-
+plot_Kmeans(X,indVar,t,idx,C,strLabel,'stepCloud',stepCloud)

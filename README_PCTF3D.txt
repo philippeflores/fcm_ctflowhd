@@ -232,7 +232,7 @@ For this example, if there are M=6 variables, T=12 triplets will be chosen
 in a balanced way.
 ************************************************
 
-*******************  Step #9  ****************** >>> Lines 38 to 47
+*******************  Step #9  ****************** >>> Lines 38 to 48
 This section builds the NBM of X thanks to the PCTF3D algorithm. The only 
 mandatory argmument of this algorithm is the number of NBM components 'R'.
 Moreover, it is possible to change the following parameters:
@@ -282,7 +282,7 @@ This option permits to choose if or not the estimation errors are computed.
     >>> [y,lambda] = PCTF3D(dataMarg,R,'computeError',computeError);
 ************************************************
 
-*******************  Step #10  ****************** >>> Lines 48 to the end
+*******************  Step #10  ****************** >>> Lines 49 to the end
 This section permits to save PCTF3D results. Saved files will appear in 
 the folder './fcm_ctflowhd/save/'. This folder is not tracked in the git 
 repository for memory concerns. Because of that, it may not exist for your 

@@ -22,4 +22,4 @@ strLink = 'single';
 stepCloud = 10;
 
 plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-    'stepCloud',stepCloud,'strScreen','halfR')
+    'stepCloud',stepCloud,'strScreen','halfR','indMarg',{1,2,3,[2,3],[3,4],[1,3]})

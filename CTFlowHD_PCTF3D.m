@@ -33,17 +33,18 @@ strStrategy = 'full';
 % T = 20;
 
 [calT,T] = createTriplets(M,indVar,strStrategy);
-dataMarg = computeMarginals(X,indVar,t,I,calT);
+tic, dataMarg = computeMarginals(X,indVar,t,I,calT); timeMarg = toc;
 
 %% PCTF3D
 
-R = 50;
+R = 20;
 
 threshLambda = 1/(20*R);
-T1 = 2000;
-T2 = 50;
+T1 = 1000;
+T2 = 20;
 
-[y,lambda,erreur3,erreur1,flag,R] = PCTF3D(dataMarg,R,'threshLambda',threshLambda);
+tic, [y,lambda,erreur3,erreur1,flag,R] = PCTF3D(dataMarg,R,'threshLambda',threshLambda); timePCTF3D = toc; timePCTF3D = timePCTF3D+timeMarg;
+fprintf("\nComputation time PCTF3D : %fs\n",timePCTF3D)
 
 %% Saving results
 
