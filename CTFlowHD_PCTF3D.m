@@ -29,13 +29,20 @@ t = supportDist(X,indVar,I,'strMethod',strMethod);
 
 %% Choice of subset of triplets and computation of 3D marginals
 
-strStrategy = 'full';
+strStrategy = '1/2';
 % T = 20;
 
-[calT,T] = createTriplets(M,indVar,strStrategy);
-tic, dataMarg = computeMarginals(X,indVar,t,I,calT); timeMarg = toc;
+[calTfull,Tfull] = createTriplets(M,indVar,'full');
+tic, dataMargFull = computeMarginals(X,indVar,t,I,calTfull); timeMarg = toc;
 
-%% PCTF3D
+if strcmpi(strStrategy,'full') && exist('calTfull','var')
+    calT = calTfull;
+else
+    [calT,T] = createTriplets(M,indVar,strStrategy);
+    tic, dataMarg = computeMarginals(X,indVar,t,I,calT); timeMarg = toc;
+end
+
+%% PCTF3D optimization algorithm
 
 R = 20;
 
@@ -43,7 +50,8 @@ threshLambda = 1/(20*R);
 T1 = 1000;
 T2 = 20;
 
-tic, [y,lambda,erreur3,erreur1,flag,R] = PCTF3D(dataMarg,R,'threshLambda',threshLambda); timePCTF3D = toc; timePCTF3D = timePCTF3D+timeMarg;
+tic, [y,lambda,cost,error3,error1,flag,R] = PCTF3D(dataMarg,R, ...
+    'threshLambda',threshLambda,'dataMargFull',dataMargFull,'computeError',0); timePCTF3D = toc; timePCTF3D = timePCTF3D+timeMarg;
 fprintf("\nComputation time PCTF3D : %fs\n",timePCTF3D)
 
 %% Saving results

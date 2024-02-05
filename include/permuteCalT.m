@@ -1,12 +1,12 @@
 function calTout = permuteCalT(calT)
-% This function permits to perform a permutation of variables of a
-% coupling. Let us define a triplet calT :
-%   calT = {{j,k,l}\subset [1:M]} such that Card(calt) = T.
+% This function permits to perform a permutation of variables inside a
+% coupling. Let us define a triplet *calT* :
+%   calT = {{j,k,l}\subset [1:M]} such that Card(calT) = T.
 % This coupling admits a sequence of degrees d. Let us define the
-% permutation perm such that perm(d) is in ascending order.
-% Finally, calTout is defined as follows:
+% permutation *perm* such that perm(d) is in ascending order.
+% Finally, *calTout* is defined as follows:
 %   calTout = {{perm(j),perm(k),perm(l) | {j,k,l} \in calT}
-% Therefore, calTout has a sequence of degrees equal to perm(d) which has
+% Therefore, *calTout* has a sequence of degrees equal to perm(d) which has
 % increasing values.
 %
 % Author: 

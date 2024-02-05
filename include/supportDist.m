@@ -1,7 +1,7 @@
 function t = supportDist(X,indVar,I,varargin)
 % This function permits to define the support of the distribution of
-% variables in indVar. Because histograms are used afterwards, each
-% interval is defined as a set of I points equally spread which create an
+% variables in *indVar*. Because histograms are used afterwards, each
+% interval is defined as a set of *I* points equally spread which create an
 % interval support [a,b].
 %
 % Author: 

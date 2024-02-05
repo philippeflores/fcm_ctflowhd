@@ -1,4 +1,12 @@
 function [y,lambda] = plot_NBMblack(y,lambda,t,indVar,strLabel,varargin)
+% plot_NBMblack : plots raw CTFlowHD results without clustering method. For
+% more information on this matter, please refer to the thesis manuscript of
+% the author.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 strScreen = 'full';
 strLanguage = 'EN';

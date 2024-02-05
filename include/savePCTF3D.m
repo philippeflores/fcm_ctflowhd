@@ -7,7 +7,7 @@ function savePCTF3D(varargin)
 % e-mail : flores.philipe@gmail.com
 % github : github.com/philippeflores/fcm_ctflowhd
 
-listBan = {'strVariables','strMethod','dataMarg','X'};
+listBan = {'strVariables','strMethod','dataMarg','dataMargFull','X'};
 
 if size(varargin,2)==0
 
@@ -174,6 +174,9 @@ else
                 indKept = ones(size(listBan,2),1);
                 for j = 1:size(listBan,2)
                     if strcmpi(listBan{j},'dataMarg')
+                        indKept(j) = 0;
+                    end
+                    if strcmpi(listBan{j},'dataMargFull')
                         indKept(j) = 0;
                     end
                 end

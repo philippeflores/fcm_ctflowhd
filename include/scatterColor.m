@@ -1,4 +1,12 @@
 function scatterColor(X,Y,varargin)
+% scatterColor : Using the MATLAB function scatter, scatterColor permits to
+% plot bivariate point clouds where points are colored if located in
+% high-density areas.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 limitX = [-0.5 4.5];
 limitY = [-0.5 4.5];

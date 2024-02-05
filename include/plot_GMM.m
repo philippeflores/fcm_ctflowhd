@@ -1,6 +1,7 @@
 function plot_GMM(g,X,indVar,t,strLabel,varargin)
 % This function permits to plot the results of a flow cytometry data
-% analysis experiment that uses a GMM.
+% analysis experiment that uses a GMM. For more information on this matter,
+% please refer to the thesis manuscript of the author.
 %
 % Author: 
 % name : Philippe Flores

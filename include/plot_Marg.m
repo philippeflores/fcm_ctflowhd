@@ -1,4 +1,12 @@
 function plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar,varargin)
+% plot_Marg : plots CTFlowHD results with a marginal visualization. For
+% more information on this matter, please refer to the thesis manuscript of
+% the author.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 strScreen = 'full';
 stepCloud = 50;

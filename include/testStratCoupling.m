@@ -57,8 +57,10 @@ if size(unique(matTriplets(:)),1)==M
         flag = 2;
     end
 
-else
+elseif size(unique(matTriplets(:)),1)<M
     flag = -M+size(unique(matTriplets(:)),1);
+elseif size(unique(matTriplets(:)),1)>M
+    flag = M+size(unique(matTriplets(:)),1);
 end
 
 end

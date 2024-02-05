@@ -1,8 +1,8 @@
 function [calTout,Tout] = createTriplets(M,indVar,strStrategy,varargin)
-% This function returns a coupling calT from a set of variables in indVar.
-% To choose triplets, a coupling strategy must be entered as an input of
-% this function. Please refer to the thesis manuscript of the author for
-% more information on coupling strategies.
+% This function returns a coupling *calT* from a set of variables in 
+% *indVar*. To choose triplets, a coupling strategy must be entered as an 
+% input of this function. Please refer to the thesis manuscript of the 
+% author for more information on coupling strategies.
 %
 % Author: 
 % name : Philippe Flores
@@ -88,8 +88,8 @@ elseif strcmpi(strStrategy,'+2')
         calTout{t} = indVar(sort(calTout{t}));
     end
 
-    V = reshape([calTout{:}],3,[])';
-    [~,indSort] = sortrows(V);
+    calTmat = reshape([calTout{:}],3,[])';
+    [~,indSort] = sortrows(calTmat);
     calTout = calTout(indSort);
 
 elseif strcmpi(strStrategy,'rng')
@@ -103,8 +103,7 @@ elseif strcmpi(strStrategy,'rng')
     
     if Tin>Tmax
         error("The number of triplets 'Tin' entered (%d) is superior to the maximal number of triplets possible (%d). Try again with another 'Tin'.", Tin, Tmax)
-    end
-    if Tin<floor(M/2)
+    elseif Tin<floor(M/2)
         error("The number of triplets 'Tin' entered (%d) is inferior to the least amount of triplets possible (%d). Try again with another 'Tin'.", Tin, floor(M/2))
     end
 
@@ -114,8 +113,8 @@ elseif strcmpi(strStrategy,'rng')
         calTout = calTmax(randperm(Tmax,Tout));
     end
     
-    V = reshape([calTout{:}],3,[])';
-    [~,indSort] = sortrows(V);
+    calTmat = reshape([calTout{:}],3,[])';
+    [~,indSort] = sortrows(calTmat);
     calTout = calTout(indSort);
 
 elseif strcmpi(strStrategy,'bal')
@@ -124,13 +123,12 @@ elseif strcmpi(strStrategy,'bal')
         fprintf("\nWarning: the entry 'calTin' is not going to be used in the following.\nPlease change the strStrategy argument if necessary.\n\n")
     end
     if exist('Tin','var')==0
-        error("To use the strStrategy option 'rng', you need to enter the number of triplets parameter 'Tin' as an input of this function.\n")
+        error("To use the strStrategy option 'bal', you need to enter the number of triplets parameter 'Tin' as an input of this function.\n")
     end
     
     if Tin>Tmax
         error("The number of triplets 'Tin' entered (%d) is superior to the maximal number of triplets possible (%d). Try again with another 'Tin'.", Tin, Tmax)
-    end
-    if Tin<floor(M/2)
+    elseif Tin<floor(M/2)
         error("The number of triplets 'Tin' entered (%d) is inferior to the least amount of triplets possible (%d). Try again with another 'Tin'.", Tin, floor(M/2))
     end
 
@@ -151,13 +149,30 @@ elseif strcmpi(strStrategy,'man')
     end
     
     if testStratCoupling(calTin,M)==1
-        calTout = calTin;
+        calTmat = reshape([calTin{:}],3,[])';
+        indVarTrip = sort(unique(calTmat(:)))';
+        if sum(indVarTrip==1:M)==M
+            Tout = size(calTin,2);
+            calTout = cell(1,Tout);
+            for t = 1:Tout
+                calTout{t} = [indVar(calTin{t}(1)) indVar(calTin{t}(2)) indVar(calTin{t}(3))];
+            end
+        elseif sum(indVar==indVarTrip)~=M
+           error("The coupling 'calTin' is not valid and cannot be used in the following. Please enter a new and valid 'calTin'.\n")
+        else
+            Tout = size(calTin,2);
+            calTout = calTin;
+        end
     else
-        error("The coupling 'calTin' is not valid and cannot be used in the following. Please enter a new valid 'calTin'.\n")
+        error("The coupling 'calTin' is not valid and cannot be used in the following. Please enter a new and valid 'calTin'.\n")
     end
 
 else
     
+    if exist('Tin','var')==1
+        fprintf("\nWarning: the entry 'Tin' is not going to be used in the following.\nPlease change the strStrategy argument if necessary.\n\n")
+    end
+
     flag = 0;
     strStrategy = char(strStrategy);
 

@@ -1,43 +1,46 @@
 function [error3,error1] = computeError(y,lambda,marg,calT,indVar)
-% COMPUTEERROR : compute errors on 1D and 3D marginals of a cpd
+% COMPUTEERROR : compute errors of a CPD model over 1D and 3D marginals.
 % 
 % *** Input Arguments ***
 %
-%   - y : cpd factors (cell of size 1xM)
-% y contains the M cpd factor matrices. y is of cell type and of size 1xM 
-% where M is the order of the cpd. Each y{m} is a IxR matrix of double 
-% containing the factors for the m-th variable (stored in columns).
+%   - y : CPD factors (cell of size 1xM)
+% *y* contains the *M* CPD factor matrices. *y* is a cell variable of size 
+% 1xM where *M* is the number of variables in *indVar*. Each y{m} is a 
+% IxR matrix of containing the factors for the m-th variable (stored in 
+% columns).
 %
-%   - lambda : cpd weights (double of size Rx1)
-% lambda contains the weights for each rank-one components of the cpd.
+%   - lambda : CPD loading vector (double of size Rx1)
+% *lambda* contains the weights for each rank-one component of the CPD.
 %
-%   - marg : 3D marginals (cell of size 1xT)
-% marg contains all 3D marginals. Even if the method was applied to a
-% subset of triplet (which corresponds to T triplets). The error on 3D 
-% marginals is computed on every possible 3D marginals.
+%   - marg : 3D marginals (cell of size 1xnchoosek(M,3))
+% *marg* contains *T* 3D marginals as order-3 arrays of size IxIxI.
 %
 %   - calT : coupling (cell of size 1xT)
-% calT contains T triplets of variables which represents the coupling
-% of variables in indVar.
+% *calT* contains *T* triplets of variables which represents the coupling
+% of variables in *indVar*.
 %
 %   - indVar : vector of considered variables (double of size 1xM)
-% indVar contains the M variables selected for the following analysis.
+% *indVar* contains the *M* variables selected for the following analysis.
 %
 % *** Output Argument ***
 %
 %   - error3 : error on 3D marginals (double)
-% error3 is the error on marginals computed on all possible 3D marginals. 
-% A = \sum_{{j,k,l}\in calTfull} 
+% *error3* is the error computed on 3D marginals. 
+% error3 = \sum_{{j,k,l}\in calT} 
 % ||H^{(jkl)}-cpdgen(lambda,y{j},y{k},y{l})||_F^2.
 %
 %   - error1 : error on 1D marginals (double)
-% error1 is the error on the M estimated marginals. B = \sum_{m=1}^M 
-% ||H^{(m)}-cpdgen(lambda,y{m})||_F^2
+% *error1* is the error on the *M* estimated marginals. 
+% error1 = \sum_{m=1}^M ||H^{(m)}-cpdgen(lambda,y{m})||_F^2
 %
 % Author: 
 % name : Philippe Flores
 % e-mail : flores.philipe@gmail.com
 % github : github.com/philippeflores/fcm_ctflowhd
+%
+% *** Requirements *** 
+% This function requires the installation of the N-way toolbox for MATLAB.
+% Reference: Anderson and Bro, "The N-way Toolbox for MATLAB", 2000
 
 M = size(y,2);
 

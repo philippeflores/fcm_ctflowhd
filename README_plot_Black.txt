@@ -3,7 +3,7 @@
 ************************************************
 
 *******************  Author  *******************
-Philippe Flores (flores.philipe'at'gmail.com)
+Philippe Flores (flores.philipe@gmail.com)
 https://github.com/philippeflores/fcm_ctflowhd
 ************************************************
 

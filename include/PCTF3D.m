@@ -1,11 +1,6 @@
-function [y,lambda,erreur3,erreur1,flag,R] = PCTF3D(dataMarg,R,varargin)
+function [y,lambda,cost,error3,error1,flag,R] = PCTF3D(dataMarg,R,varargin)
 % PCTF3D (Partially Coupled Tensor Factorization of 3D Marginals)
 % 
-% Author: 
-% name : Philippe Flores
-% e-mail : flores.philipe@gmail.com
-% github : github.com/philippeflores/fcm_ctflowhd
-%
 % -------------------------------------------------------------------------
 % INPUTS
 % -------------------------------------------------------------------------
@@ -17,16 +12,21 @@ function [y,lambda,erreur3,erreur1,flag,R] = PCTF3D(dataMarg,R,varargin)
 % OUTPUTS
 % -------------------------------------------------------------------------
 % 
-% y : 1xM cell that contains the factors of the factorization (where M is 
+% y : 1xM cell that contains the factors of the factorization (where *M* is 
 % the order of the tensor)
 % lambda : Rx1 vector containing the proportion of each component of the
 % decomposition
-% erreur3 : Vector that contains error on 3D marginals
-% erreur1 : Vector that contains error on 1D marginals
+% cost : Vector that contains cost function error over outer iterations
+% error3 : Vector that contains error on 3D marginals over outer iterations
+% error1 : Vector that contains error on 1D marginals over outer iterations
 % flag : information about the stop of the algorithm
 % R : output rank of the decomposition
 % 
-% -------------------------------------------------------------------------
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
+
 % -------------------------------------------------------------------------
 % Set the default parameters
 % -------------------------------------------------------------------------
@@ -64,6 +64,8 @@ else
                 threshLambda = varargin{i+1};
             case 'COMPUTEERROR'
                 boolComputeError = varargin{i+1};
+            case 'DATAMARGFULL'
+                dataMargFull = varargin{i+1};
             otherwise
                 error(['Unrecognized option: ''' varargin{i} '''']);
         end
@@ -96,9 +98,15 @@ end
 if exist('lambda0','var'), lambda = lambda0; else, lambda = rand(R,1); end
 lambda = lambda/sum(lambda); lambdat = zeros(R,1);
 
-erreur3 = inf(T1+1,1);
-erreur1 = inf(T1+1,1);
-[erreur3(1),erreur1(1)] = computeError(y,lambda,marg,calT,indVar);
+cost = inf(T1+1,1);
+error3 = inf(T1+1,1);
+error1 = inf(T1+1,1);
+[cost(1),error1(1)] = computeError(y,lambda,marg,calT,indVar);
+if exist('dataMargFull','var')
+    margFull = dataMargFull.marg;
+    calTfull = dataMargFull.calT;
+    error3(1) = computeError(y,lambda,margFull,calTfull,indVar);
+end
 
 flag = 0; t1 = 0;
 if boolPlot==1, fprintf("\nPCTF3D :    "), end
@@ -121,7 +129,10 @@ while flag == 0
 	[lambda,lambdat] = ADMMl(lambda,lambdat,y,marg,calT,R,rho,eps,T2,indVar);
 
 	if boolComputeError==1
-		[erreur3(t1+1),erreur1(t1+1)] = computeError(y,lambda,marg,calT,indVar);
+		[cost(t1+1),error1(t1+1)] = computeError(y,lambda,marg,calT,indVar);
+        if exist('dataMargFull','var')
+            error3(t1+1) = computeError(y,lambda,margFull,calTfull,indVar);
+        end
 	end
 	t1 = t1+1;
 	if t1>T1, flag = T1; end
@@ -156,11 +167,15 @@ if exist('threshLambda','var')
         end
 		R = size(y{1},2); lambda = lambda(1:R);
 	end
-	[erreur3(end),erreur1(end)] = computeError(y,lambda,marg,calT,indVar);
+	[cost(end),error1(end)] = computeError(y,lambda,marg,calT,indVar);
+    if exist('dataMargFull','var')
+        error3(end) = computeError(y,lambda,margFull,calTfull,indVar);
+    end
 end
 
-erreur3(isinf(erreur3)) = [];
-erreur1(isinf(erreur1)) = [];
+cost(isinf(cost)) = [];
+error3(isinf(error3)) = [];
+error1(isinf(error1)) = [];
 end
 
 function [H,U] = ADMMy(y,yt,m,lambda,marg,calT,R,rho,eps,T2,indVar)

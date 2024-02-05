@@ -18,7 +18,7 @@ indVar = [];
 
 [indVar,M,strLabel] = loadIndVar(X,indVar,fcsHdr);
 
-% strLabel = changeLabel(strLabel);
+strLabel = changeLabel(strLabel);
 
 %% Definition of variable spaces
 

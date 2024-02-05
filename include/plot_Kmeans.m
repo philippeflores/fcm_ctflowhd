@@ -1,4 +1,12 @@
 function plot_Kmeans(X,indVar,t,idx,C,strLabel,varargin)
+% plot_Kmeans : plots Kmeans results in the case of a flow cytometry 
+% experiment. For more information on this matter, please refer to the 
+% thesis manuscript of the author.
+%
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 strScreen = 'full';
 stepCloud = 50;

@@ -1,6 +1,8 @@
 function plot_tSNE(Y,indVar,X,strLabel,varargin)
 % This function permits to plot the results of a flow cytometry experiment
-% that uses t-SNE maps colorized with marker expressions.
+% that uses t-SNE maps colorized with marker expressions. For more 
+% information on this matter, please refer to the thesis manuscript of the 
+% author.
 %
 % Author: 
 % name : Philippe Flores

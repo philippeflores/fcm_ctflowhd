@@ -3,7 +3,7 @@
 ************************************************
 
 *******************  Author  *******************
-Philippe Flores (flores.philipe'at'gmail.com)
+Philippe Flores (flores.philipe@gmail.com)
 https://github.com/philippeflores/fcm_ctflowhd
 ************************************************
 
@@ -15,7 +15,7 @@ refer to the script 'CTFlowHD_PCTF3D' if this is not the case.
 
 *******************  Step #2  ****************** Lines 1 to 9
 As a first step, PCTF3D results must be loaded on your workspace WITH the 
-observation matrix X. There are two possible ways to do this.
+observation matrix *X*. There are two possible ways to do this.
 
 First, you can load a PCTF3D result saved file from the directory 
 './fcm_CTFlowHD/save/'. In order to save PCTF3D results, please refer to 
@@ -33,8 +33,8 @@ your workspace.
 
 *******************  Step #4  ****************** Lines 10 to the 19
 This section plots results of PCTF3D with a dendrogram visualization. It is
-required to build a dendrogram to visualize afterward the marginal of rank
-one clusters. You can close or keep this figure for the rest of the script.
+required to build a dendrogram to visualize afterwards the marginal of rank
+one terms. You can close or keep this figure for the rest of the script.
 
 After building the dendrogram between rank-1 components, the dendrogram is 
 cut thanks to a threshold set by end users. Components are then clustered 
@@ -73,7 +73,7 @@ Euclidian distance between vectors of maximum probability.
     - 'corr':
 For this metric, the distance between two rank-one terms is directly 
 computed before the linkage. This distance is defined as the product of the
-M correlations between the 1D vectors of probability. To enhance 
+*M* correlations between the 1D vectors of probability. To enhance 
 visualization, the distance computed for this metric are normalized. It 
 does not affect the clustering method as we perform a hierarchical 
 clustering afterwards.
@@ -95,35 +95,37 @@ default.
 
 Finally, it is possible to regroup rank-1 terms in the visualization by 
 changing the option 'boolRegroup':
-    >>> plot_Dendro(y,lambda,t,indVar,strLabel,threshDendro,'boolRegroup',1)
+    >>> plot_Dendro(y,lambda,t,indVar,strLabel,threshDendro, ...
+            'boolRegroup',1)
 This option is 0 by default, meaning that rank 1 terms are plotted 
 separately by default. However, rank-1 terms that have a distance below the
-threshDendro value will have the same color. If boolRegroup is set to 1, 
-clustered rank-one terms will be plotted as 1 component defined by the 
+value *threshDendro* will have the same color. If 'boolRegroup' is set to 
+1, clustered rank-one terms will be plotted as 1 component defined by the 
 weighted sum of 1D factors.
 ************************************************
 
 *******************  Step #3  ****************** Lines 20 to the end
 This section plots the dendrogram clusters with a marginal visualization. 
 The function 'plot_Marg' plots every 1D and 2D marginals possible from the 
-set of variables in 'indVar'. This results in a MxM grid of plots. On the 
+set of variables in *indVar*. This results in a MxM grid of plots. On the 
 m-th diagonal of the grid, the 1D marginals of each dendrogram cluster is 
 plotted as well as the empirical estimation of the corresponding 1D 
 marginal. For other plots of indices (j,k), a 2D scatter plot of the cells 
 is represented. After this, dendrogram clusters are plotted with contours 
-of the 2D marginal distribution.
+of the 2D marginal distribution. Contours are colored with the same color 
+used in the dendrogram visualization (see Step 2).
 
 It is possible to plot only a portion of those lower-order marginals. This 
-can be performed by entering 'indMarg' as an input of this function:
+can be performed by entering *indMarg* as an input of this function:
     >>> 'all' (default):
 This option permits to plot every 1D and 2D marginals.
     >>> a variable of type cell:
-If one inputs 'indMarg' as a variable of type cell containing the indices 
+If one inputs *indMarg* as a variable of type cell containing the indices 
 of the requested marginals, the function will only plots those marginals.
-First, an 'indMarg' element can be a scalar corresponding to an index m
-between 1 and M. This will results in the apparation of the m-th 1D 
-marginal. Finally, an 'indMarg' element can be a 1x2 vector of indices 
-(j,k) between 1 and M. This will results in the plot of the 2D marginal 
+First, an *indMarg* element can be a scalar corresponding to an index m
+between 1 and *M*. This will results in the apparation of the m-th 1D 
+marginal. Finally, an *indMarg* element can be a 1x2 vector of indices 
+(j,k) between 1 and *M*. This will results in the plot of the 2D marginal 
 for variables j and k.
 Example:
     >>> indMarg = {1,2,3,[1,2],[3,1],[2,3]};
@@ -143,12 +145,12 @@ marginals will always be plotted before 2D marginals. This means that it is
 not possible to plot alternatively a 1D marginal then a 2D and after coming 
 back to a 1D marginal.
 
-Th dendrogram function 'plot_Dendro' returns an object 'compGroup' that 
+Th dendrogram function 'plot_Dendro' returns an object *compGroup* that 
 stores the dendrogram clusters. It is a 1xnCluster cell variable that 
-contains the information of the nCluster groups of rank-one terms. By 
-default, the function 'plot_Marg' is plotting every 'compGroup' clusters 
-but it is possible to plot a subset of clusters by entering the option 
-'indGroup' as an input of this function:
+contains the information of the *nCluster* groups of rank-one terms. By 
+default, the function 'plot_Marg' is plotting every *compGroup* clusters 
+but it is possible to plot a subset of clusters by entering the variable 
+*indGroup* as an input of this function:
     >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
             'indGroup',[1,3])
 This will only plot the first and third clusters.
@@ -163,14 +165,14 @@ following options:
     >>> ...,'strScreen','full', ...) : full screen (default).
 
 You can also change the parameter 'colMax' with the same method. You can
-set this parameter with any number strictly positive. It will define the 
+set this parameter with any strictly positive number. It will define the 
 maximum number of plots along one column. This option will be ignored if 
 all possible lower-order marginals are plotted.
     >>> indMarg = ...;
     >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
             'indMarg',indMarg,'colMax',2)
 
-For large datasets, it is possible to plot 1 cell every 'stepCloud' cells. 
+For large datasets, it is possible to plot 1 cell every *stepCloud* cells. 
 You can change this optional parameter to 30 (default is 50) for example:
     >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
             'stepCloud',30)

@@ -1,6 +1,6 @@
 function calTfull = fullCoupled(M)
-% This function outputs the coupling that contains all possible triplets of
-% variables in [1:M]. 
+% This function outputs the coupling that contains all possible triplets
+% for variables in [1:M]. 
 % 
 % Author: 
 % name : Philippe Flores

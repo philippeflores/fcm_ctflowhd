@@ -12,7 +12,7 @@ filename = "file_CCT";
 [X,fcsHdr,strFile] = loadFilename(filename);
 strVariables = {fcsHdr.par.marker}';
 
-%% Selection of variables to build the K-means map
+%% Selection of variables to plot the K-means clusters
 
 indVar = [];
 
@@ -26,14 +26,14 @@ strMethod = 'fluo';
 
 t = supportDist(X,indVar,100,'strMethod',strMethod);
 
-%% Building the K-means model
+%% Define the K-means clusters
 
 K = 3;
 
 tic, [idx,C] = kmeans(X(:,indVar),K); time_Kmeans = toc;
 fprintf("Computation time for K-means : %fs\n",time_Kmeans)     
 
-%% Plot the Kmeans clusters
+%% Plot the K-means clusters
 
 stepCloud = 10;
 

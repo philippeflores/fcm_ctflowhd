@@ -1,6 +1,6 @@
 function [g,y,lambda] = buildGMM(X,indVar,R,t)
 % This function builds a Gaussian Mixture Model from an observation matrix
-% X.
+% *X*.
 %
 % Author: 
 % name : Philippe Flores

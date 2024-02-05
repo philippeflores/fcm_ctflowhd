@@ -1,11 +1,6 @@
 function val = frob(X)
 % FROB : computes the frobenius norm of a tensor
 %
-% Author: 
-% name : Philippe Flores
-% e-mail : flores.philipe@gmail.com
-% github : github.com/philippeflores/fcm_ctflowhd
-%
 % *** Input Arguments ***
 %                                        ____ M ____
 %   - X : order-M tensor (double of size I x ... x I)
@@ -13,12 +8,15 @@ function val = frob(X)
 % *** Output Argument ***
 %
 %   - val : frobenius norm (double)
-% val represents the frobenius norm of the order-M tensor.
+% *val* represents the frobenius norm of the order-*M* tensor *X*.
 % 
 % *** Summary *** 
-% This function returns the frobenius norm of a tensor:
-% val = ||X||_F.
+% This function returns the frobenius norm of a tensor: val = ||X||_F.
 %
+% Author: 
+% name : Philippe Flores
+% e-mail : flores.philipe@gmail.com
+% github : github.com/philippeflores/fcm_ctflowhd
 
 val = sqrt(innerprod(X,X));
 

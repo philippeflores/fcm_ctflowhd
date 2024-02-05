@@ -3,7 +3,7 @@
 ************************************************
 
 *******************  Author  *******************
-Philippe Flores (flores.philipe'at'gmail.com)
+Philippe Flores (flores.philipe@gmail.com)
 https://github.com/philippeflores/fcm_ctflowhd
 ************************************************
 
@@ -28,7 +28,7 @@ your workspace.
 ************************************************
 
 *******************  Step #3  ****************** Lines 10 to the end
-This section plots results of PCTF3D with a dendrogram visualization. After
+This section plots PCTF3D results with a dendrogram visualization. After
 building the dendrogram between rank-1 components, the dendrogram is cut 
 thanks to a threshold set by end users. Components are then clustered if 
 together their normalized dendrogram distance is below the threshold.
@@ -60,7 +60,7 @@ This ouputs a Mx1 vector for each component of the decomposition. By
 stacking these vectors in a RxM matrix, it is possible to perform linkage 
 by computing the Euclidian distance between vectors of maximum probability.
     - 'esp' (default):
-Each rank-one term is represented by a M vectors of size Ix1. First, the 
+Each rank-one term is represented by a *M* vectors of size Ix1. First, the 
 'esp' metric finds the expected value of each 1D factor. This ouputs a Mx1 
 vector for each component of the decomposition. By stacking these vectors 
 in a RxM matrix, it is possible to perform linkage by computing the 
@@ -68,7 +68,7 @@ Euclidian distance between vectors of maximum probability.
     - 'corr':
 For this metric, the distance between two rank-one terms is directly 
 computed before the linkage. This distance is defined as the product of the
-M correlations between the 1D vectors of probability. To enhance 
+*M* correlations between the 1D vectors of probability. To enhance 
 visualization, the distance computed for this metric are normalized. It 
 does not affect the clustering method as we perform a hierarchical 
 clustering afterwards.
@@ -93,8 +93,8 @@ changing the option 'boolRegroup':
     >>> plot_Dendro(y,lambda,t,indVar,strLabel,threshDendro,'boolRegroup',1)
 This option is 0 by default, meaning that rank 1 terms are plotted 
 separately by default. However, rank-1 terms that have a distance below the
-threshDendro value will have the same color. If boolRegroup is set to 1, 
-clustered rank-one terms will be plotted as 1 component defined by the 
+*threshDendro* value will have the same color. If 'boolRegroup' is set to 
+1, clustered rank-one terms will be plotted as 1 component defined by the 
 weighted sum of 1D factors.
 ************************************************
 
