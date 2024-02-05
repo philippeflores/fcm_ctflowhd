@@ -7,7 +7,7 @@ addpath("./include")
 
 load("save/file_CCT_I25R47T4.mat");
 
-%% Plot dendrogram clusters with marginal visualization
+%% Plot K-means clusters
 close all
 
 K = 3;

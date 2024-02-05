@@ -27,7 +27,7 @@ sections of the script 'CTFlowHD_plot_Kmeans' (Lines 1 to 9) as it clears
 your workspace.
 ************************************************
 
-*******************  Step #4  ****************** Lines 10 to the end
+*******************  Step #3  ****************** Lines 10 to the end
 This section plots results of PCTF3D with a K-means visualization. The 
 K-means clusters are obtained from the rank-one terms of the CPD obtained 
 by PCTF3D. The hyperparameter 'K' must be set up. It refers to the number 

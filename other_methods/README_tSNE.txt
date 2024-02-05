@@ -66,7 +66,7 @@ possible).
 Select the variables to build the t-SNE map. At line 16, this is possible 
 to manually type the variables that will be used for the t-SNE map. To help
 you in your choice, the variable names are stored in the variable 
-'strVariables'.
+*strVariables*.
 
 If you choose:
     >>> indVar = [];
@@ -79,16 +79,16 @@ Follow the instructions to rename each label.
 
 *******************  Step #7  ****************** >>> Lines 23 to 29
 This section runs the t-SNE algorithm. Before running this, the 
-hyperparameter 'perplexity' must be set up. This parameter can be chosen 
-between 2 and N where N represents the number of rows of X. The t-SNE 
+hyperparameter *perplexity* must be set up. This parameter can be chosen 
+between 2 and *N* where *N* represents the number of rows of *X*. The t-SNE 
 algorithm run slower for high perplexities values. However, for higher 
 values of perplexity, cells are more separated.
 ************************************************
 
 *******************  Step #8  ****************** >>> Lines 30 to the end
-This section plots one t-SNE map for each marker in 'indVar'. 
+This section plots one t-SNE map for each marker in *indVar*. 
 
-For large datasets, it is possible to plot 1 cell every 'stepCloud' cells. 
+For large datasets, it is possible to plot 1 cell every *stepCloud* cells. 
 To change this optional parameter to 30 for example, change line 35 for 
 this:
     >>> plot_tSNE(Y,indVar,X,strLabel,'stepCloud',30)
@@ -101,13 +101,13 @@ set this parameter with the following options:
     >>> ...,'strScreen','halfR', ...) : half right of the screen,
     >>> ...,'strScreen','full', ...) : full screen.
 
-You can also change the parameter 'xlimMan' with the same method. You can
+You can also change the parameter *xlimMan* with the same method. You can
 set this parameter with any array of size 1x2 [a b] where a<b. The colormap
 limits for every plot will be set with [a,b]. Default is [-0.5 4.5] and is 
-suited for fluorescence values. If you want colomap limits picked 
+suited for fluorescence values. If you want colormap limits picked 
 automaticly, choose 'auto' for this parameter.
 
-You can also change the parameter 'colMax' with the same method. You can
+You can also change the parameter *colMax* with the same method. You can
 set this parameter with any number strictly positive. It will define the 
 maximum number of plots along one column.
 ************************************************

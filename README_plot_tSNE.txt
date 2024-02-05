@@ -1,5 +1,5 @@
 ************************************************
-* README CTFlowHD_plot_Marg
+* README CTFlowHD_plot_tSNE
 ************************************************
 
 *******************  Author  *******************
@@ -8,26 +8,22 @@ https://github.com/philippeflores/fcm_ctflowhd
 ************************************************
 
 *******************  Step #1  ******************
-The script 'CTFlowHD_plot_Marg' is a visualization script. Therefore, it
+The script 'CTFlowHD_plot_tSNE' is a visualization script. Therefore, it
 requires that the PCTF3D method was applied prior to this script. Please 
 refer to the script 'CTFlowHD_PCTF3D' if this is not the case.
 ************************************************
 
 *******************  Step #2  ****************** Lines 1 to 9
-As a first step, PCTF3D results must be loaded on your workspace WITH the 
-observation matrix *X*. There are two possible ways to do this.
+As a first step, PCTF3D results must be loaded on your workspace. There are 
+two possible ways to do this.
 
 First, you can load a PCTF3D result saved file from the directory 
 './fcm_CTFlowHD/save/'. In order to save PCTF3D results, please refer to 
-the script 'CTFlowHD_PCTF3D' and its instructions 'README_PCTF3D'. Do not 
-forget that this script needs the observation matrix *X* to be saved. To 
-save the variable *X* in a PCTF3D results saved file, you have to mention 
-it as an option of the function 'savePCTF3D':
-    >>> savePCTF3D("data")
+the script 'CTFlowHD_PCTF3D' and its instructions 'README_PCTF3D'.
 
-Secondly, you can run the script 'CTFlowHD_plot_Marg' right after running 
+Secondly, you can run the script 'CTFlowHD_plot_tSNE' right after running 
 the script 'CTFlowHD_PCTF3D'. To do so, you have to skip the first two 
-sections of the script 'CTFlowHD_plot_Marg' (Lines 1 to 9) as it clears 
+sections of the script 'CTFlowHD_plot_tSNE' (Lines 1 to 9) as it clears 
 your workspace.
 ************************************************
 
@@ -105,55 +101,32 @@ weighted sum of 1D factors.
 ************************************************
 
 *******************  Step #4  ****************** Lines 20 to the end
-This section plots the dendrogram clusters with a marginal visualization. 
-The function 'plot_Marg' plots every 1D and 2D marginals possible from the 
-set of variables in *indVar*. This results in a MxM grid of plots. On the 
-m-th diagonal of the grid, the 1D marginals of each dendrogram cluster is 
-plotted as well as the empirical estimation of the corresponding 1D 
-marginal. For other plots of indices (j,k), a 2D scatter plot of the cells 
-is represented. After this, dendrogram clusters are plotted with contours 
-of the 2D marginal distribution. Contours are colored with the same color 
-used in the dendrogram visualization (see Step 2).
+This section plots the dendrogram clusters with a t-SNE visualization. 
+The function 'plot_NBMtSNE' builds a t-SNE map to visualize how components 
+are distributed. First, centroids for each component are computed which 
+permit to create a centroid matrix of size RxM. This matrix enables the 
+building of the t-SNE map. First, a t-SNE map is plotted with the 
+colorization of the dendrogram previously plotted. Finally, for eah marker
+a colorized map is plotted with mean value of fluorescence. 
 
-It is possible to plot only a portion of those lower-order marginals. This 
-can be performed by entering *indMarg* as an input of this function:
-    >>> 'all' (default):
-This option permits to plot every 1D and 2D marginals.
-    >>> a variable of type cell:
-If one inputs *indMarg* as a variable of type cell containing the indices 
-of the requested marginals, the function will only plots those marginals.
-First, an *indMarg* element can be a scalar corresponding to an index m
-between 1 and *M*. This will results in the apparation of the m-th 1D 
-marginal. Finally, an *indMarg* element can be a 1x2 vector of indices 
-(j,k) between 1 and *M*. This will results in the plot of the 2D marginal 
-for variables j and k.
-Example:
-    >>> indMarg = {1,2,3,[1,2],[3,1],[2,3]};
-    >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar,'indMarg',indMarg)
-This will result in a figure that plots the 1D marginals of indices 1 2 and 
-3 as well as 2D marginals (1,2) (3,1) and (2,3).
+The first parameter that can be set up is the perplexity of the t-SNE map. 
+This parameter can be chosen between 2 and *N* where *N* represents the 
+number of rows of *X*. The t-SNE algorithm run slower for high perplexities 
+values. However, for higher values of *perplexity*, cells are more 
+separated.
+    >>> Y = plot_NBMtSNE(y,lambda,compGroup,t,strLabel,indVar, ...
+                'perplexity',10);
 
-It is possible to separate 1D marginal plots from 2D marginal plots. To do 
-so, you can enter the option 'boolSeparation' with the following:
-    >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-            'indMarg',indMarg,'boolSeparation',1)
-The default choice is separating the two types of plots.
-    >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-            'indMarg',indMarg,'boolSeparation',0)
-This default choice is not separating the two types of plots. However, 1D 
-marginals will always be plotted before 2D marginals. This means that it is
-not possible to plot alternatively a 1D marginal then a 2D and after coming 
-back to a 1D marginal.
-
-The dendrogram function 'plot_Dendro' returns an object *compGroup* that 
-stores the dendrogram clusters. It is a 1xnCluster cell variable that 
-contains the information of the *nCluster* groups of rank-one terms. By 
-default, the function 'plot_Marg' is plotting every *compGroup* clusters 
-but it is possible to plot a subset of clusters by entering the variable 
-*indGroup* as an input of this function:
-    >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-            'indGroup',[1,3])
-This will only plot the first and third clusters.
+To perform t-SNE on rank-one terms, the centroid of each component must 
+be computed. To do so, it is possible to change the option 'strCentroid' 
+of the function 'plot_NBMtSNE'. The two options for this parameter are 
+'esp' and 'max':
+    - 'esp' (default):
+For this option, the centroid of a factor y{m}(:,r) is defined as the 
+expected value of the 1D marginal y{m}(:,r).
+    - 'max' :
+For this option, the centroid of a factor y{m}(:,r) is defined as the 
+centroid of the bin that has maximum probability y{m}(:,r).
 
 You can change the parameter 'strScreen' that permits to change the 
 position and size of the figure. You can set this parameter with the 
@@ -165,20 +138,12 @@ following options:
     >>> ...,'strScreen','full', ...) : full screen (default).
 
 You can also change the parameter 'colMax' with the same method. You can
-set this parameter with any strictly positive number. It will define the 
-maximum number of plots along one column. This option will be ignored if 
-all possible lower-order marginals are plotted.
-    >>> indMarg = ...;
-    >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-            'indMarg',indMarg,'colMax',2)
-
-For large datasets, it is possible to plot 1 cell every *stepCloud* cells. 
-You can change this optional parameter to 30 (default is 50) for example:
-    >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-            'stepCloud',30)
+set this parameter with any positive number. It will define the maximum 
+number of plots along one column.
+    >>> Y = plot_NBMtSNE(y,lambda,compGroup,t,strLabel,indVar,'colMax',0);
 ************************************************
 
 *******  Example given in the manuscript  ******
-In the thesis manuscript of the author, figure 5.13 features an example of 
-one 2D marginal plot for a flow cytometry controlled dataset.
+In the thesis manuscript of the author, figure 5.16 features an example of 
+one t-SNE map for a flow cytometry controlled dataset.
 ************************************************
