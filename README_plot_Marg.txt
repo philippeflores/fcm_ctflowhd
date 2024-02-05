@@ -27,7 +27,7 @@ option of the function 'savePCTF3D':
 
 Secondly, you can run the script 'CTFlowHD_plot_Marg' right after running 
 the script 'CTFlowHD_PCTF3D'. To do so, you have to skip the first two 
-sections of the script 'CTFlowHD_plot_Dendro' (Lines 1 to 9) as it clears 
+sections of the script 'CTFlowHD_plot_Marg' (Lines 1 to 9) as it clears 
 your workspace.
 ************************************************
 
@@ -136,10 +136,10 @@ This will result in a figure that plots the 1D marginals of indices 1 2 and
 It is possible to separate 1D marginal plots from 2D marginal plots. To do 
 so, you can enter the option 'boolSeparation' with the following:
     >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-            'boolSeparation',1)
-This default choice is separating the two types of plots.
+            'indMarg',indMarg,'boolSeparation',1)
+The default choice is separating the two types of plots.
     >>> plot_Marg(y,lambda,compGroup,X,t,strLabel,indVar, ...
-            'boolSeparation',0)
+            'indMarg',indMarg,'boolSeparation',0)
 This default choice is not separating the two types of plots. However, 1D 
 marginals will always be plotted before 2D marginals. This means that it is
 not possible to plot alternatively a 1D marginal then a 2D and after coming 

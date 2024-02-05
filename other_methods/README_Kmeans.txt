@@ -144,8 +144,6 @@ hyperparameter 'K' must be set up. This parameter refers to the number of
 clusters.
 ************************************************
 
-
-
 *******************  Step #9  ****************** Lines 36 to the end
 This section plots the K-means clusters with a marginal visualization. 
 The function 'plot_Kmeans' plots every 1D and 2D marginals possible from 
