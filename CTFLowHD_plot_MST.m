@@ -19,4 +19,4 @@ strLink = 'single';
 
 %% Plot dendrogram clusters with Minimum Spanning Tree (MST) visualization
 
-plot_MST(y,lambda,strLabel,compGroup,t,indVar,'strCentroid','max','colMax',0);
+plot_MST(y,lambda,strLabel,compGroup,t,indVar,'strCentroid','max','colMax',0)
