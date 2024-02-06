@@ -9,7 +9,7 @@ function plot_GMM(g,X,indVar,t,strLabel,varargin)
 % github : github.com/philippeflores/fcm_ctflowhd
 
 stepCloud = 10;
-indPlot = {};
+indMarg = {};
 colMax = -1;
 strScreen = 'full';
 strXlim = 'support';
@@ -23,8 +23,8 @@ else
                 stepCloud = varargin{i+1};
             case 'STRSCREEN'
                 strScreen = varargin{i+1};
-            case 'INDPLOT'
-                indPlot = varargin{i+1};
+            case 'INDMARG'
+                indMarg = varargin{i+1};
             case 'COLMAX'
                 colMax = varargin{i+1};
             case 'STRXLIM'
@@ -45,7 +45,7 @@ colorR = cell(1,R);
 figure
 bigScreen(strScreen)
 
-if isempty(indPlot)==1
+if isempty(indMarg)==1
 
     ax2D = cell(M,M);
     ax1D = cell(1,M);
@@ -54,7 +54,7 @@ if isempty(indPlot)==1
         for m2 = 1:size(indVar,2)
             if m1~=m2
                 ax2D{m2,m1} = subplot(M,M,(m1-1)*M+m2);
-                plot(X(1:stepCloud:end,indVar(m2)),X(1:stepCloud:end,indVar(m1)),'o', ...
+                plot(X(1:stepCloud:end,indVar(m2)),X(1:stepCloud:end,indVar(m1)),'.', ...
                     'LineStyle','none','Color',0.4*[1 1 1],'MarkerSize',3)
                 if strcmpi(strXlim,'auto')==0
                     if strcmpi(strXlim,'support')
@@ -137,12 +137,12 @@ if isempty(indPlot)==1
 
 else
 
-    nMarg = size(indPlot,2);
-    nMarg1D = 0; nMarg2D = 0; temp = ones(nMarg,1); for n = 1:nMarg, if size(indPlot{n},2)==1, nMarg1D = nMarg1D+1; else, nMarg2D = nMarg2D+1; temp(n) = 2; end, end
+    nMarg = size(indMarg,2);
+    nMarg1D = 0; nMarg2D = 0; temp = ones(nMarg,1); for n = 1:nMarg, if size(indMarg{n},2)==1, nMarg1D = nMarg1D+1; else, nMarg2D = nMarg2D+1; temp(n) = 2; end, end
     nC = max([min([colMax nMarg1D]) min([colMax nMarg2D])]);
     nRow = ceil(nMarg1D/nC)+ceil(nMarg2D/nC);
-    indMarg1 = cell2mat(indPlot(temp==1));
-    indMarg2 = cell2mat(indPlot(temp==2)');
+    indMarg1 = cell2mat(indMarg(temp==1));
+    indMarg2 = cell2mat(indMarg(temp==2)');
     for n = 1:nMarg1D
         m = indMarg1(n);
         subplot(nRow,nC,n)
